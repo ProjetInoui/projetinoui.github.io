@@ -62,10 +62,15 @@
 
 			<div class="rubriques">	
 				<h3><img class="pictofeatures" src="img/isochrons.png"></h3>
-                                <a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fisochrones%3Ffrom%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26boundary_duration%255B%255D%3D600%26boundary_duration%255B%255D%3D1200%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D2400%26boundary_duration%255B%255D%3D3000%26boundary_duration%255B%255D%3D3600%26">Graphical isochrons with coverage</a>
-                                <a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fheat_maps%3Ffrom%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26max_duration%3D3600%26resolution%3D200%26">Heat map with coverage</a>
-				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fjourneys%3Ffrom%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26max_duration%3D1200%26">Stop point isochrons with coverage</a>
-                        </div>
+<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fisochrones%3Ffrom%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26boundary_duration%255B%255D%3D600%26boundary_duration%255B%255D%3D1200%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D2400%26boundary_duration%255B%255D%3D3000%26boundary_duration%255B%255D%3D3600%26">Graphical isochrons with coverage</a>
+
+<script>
+	d = new Date();
+	datetime = d.getFullYear() + '' +  (d.getMonth()+1) + ''+  d.getDate() + 'T' + d.getHours() + '' + d.getMinutes() + '00';
+//	datetime = sprintf('%04d%02d%02dT%02d%02d00', d.getFullYear(), d.getMonth() + 1, d.getDate(),d.getHours(),d.getMinutes());
+	document.location.href = 'play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Ffr-sw%2Fisochrones%3Ffrom%3D1.44346;43.60426%26datetime%3D'+ datetime +'%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D3600%26boundary_duration%255B%255D%3D5400%26boundary_duration%255B%255D%3D7200%26';
+</script>
+                    </div>
 		</div><!-- ferme col -->
 
 		<div id="urlForm"><!-- url -->

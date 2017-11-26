@@ -80,18 +80,21 @@
               <div id="requestUrl"></div>
             </div>
             <div id="submitDiv">
-              <button class="Submit" onclick="request.submit()">Submit</button>
-              or Ctrl+Enter
+              <button class="Submit" onclick="request.submit()">Rafraichir</button>
             </div>
           </div><!-- createdRequestFrame -->
         </div><!-- hContainer -->
       </div><!-- request-->
-
+      
+		<span class="with-bg-color" style="background-color: rgba(0, 255, 0, 0.25)">duration: [0s, 30min]</span>
+		<span class="with-bg-color" style="background-color: rgba(170, 255, 0, 0.25)">duration: [30min, 1h]</span>
+		<span class="with-bg-color" style="background-color: rgba(255, 171, 0, 0.25)">duration: [1h, 1h30min]</span>
+		<span class="with-bg-color" style="background-color: rgba(255, 0, 0, 0.25)">duration: [1h30min, 2h]</span>
+		
       <hr>
 
       <div id="response"><!-- response -->
         <div class="hContainer">
-          <h2>Explore the response</h2>
           <div id="status">Loading...</div>
           <div id="data"></div>
         </div><!-- hContainer -->
