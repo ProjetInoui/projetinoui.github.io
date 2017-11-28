@@ -75,10 +75,10 @@
 	else dd = d.getDate();
 	if (d.getMonth()+1 < 10) mo = "0" + d.getMonth()+1;
 	else mo = d.getMonth()+1;
-	
+	token = "a1def084-c160-49a3-9198-6cfc960bf5ff";
 	datetime = d.getFullYear() + '' +  mo + ''+  dd + 'T' + hh + '' + mm + '00';
 //	datetime = sprintf('%04d%02d%02dT%02d%02d00', d.getFullYear(), d.getMonth() + 1, d.getDate(),d.getHours(),d.getMinutes());
-	document.location.href = 'play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Ffr-sw%2Fisochrones%3Ffrom%3D1.44346;43.60426%26datetime%3D'+ datetime +'%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D3600%26boundary_duration%255B%255D%3D5400%26boundary_duration%255B%255D%3D7200%26';
+	document.location.href = 'play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Ffr-sw%2Fisochrones%3Ffrom%3D1.44346;43.60426%26datetime%3D'+ datetime +'%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D3600%26boundary_duration%255B%255D%3D5400%26boundary_duration%255B%255D%3D7200%26&token='+token;
 </script>
                     </div>
 		</div><!-- ferme col -->
