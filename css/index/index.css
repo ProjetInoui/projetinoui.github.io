@@ -169,6 +169,13 @@ A #doc {
   width: 50%;
   vertical-align: top; }
 
+#dtDate, #dtMois, #dtAnnee, #dtHeure, #dtMin {
+  border: 1px solid #000; }
+
+#dtDate, #dtHeure, #dtMin {
+  min-width: auto;
+  text-align: center; }
+
 #header {
   width: 100%;
   background: #FFF;

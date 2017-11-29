@@ -115,21 +115,60 @@
 	</div>
 	<div class="inputDiv toDelete">
 	 <span class="key">DateHeure</span>
-	 <input type="text" placeholder="type your value here" class="value parameters hasDatepicker" id="dapi">
+	 
+	 <input type="text" placeholder="Jour" id="dtDate">
+	 <select id="dtMois">
+	 	<option value="0">Janvier</option>
+	 	<option value="1">Février</option>
+	 	<option value="2">Mars</option>
+	 	<option value="3">Avril</option>
+	 	<option value="4">Mai</option>
+	 	<option value="5">Juin</option>
+	 	<option value="6">Juillet</option>
+	 	<option value="7">Aout</option>
+	 	<option value="8">Septembre</option>
+	 	<option value="9">Octobre</option>
+	 	<option value="10">Novembre</option>
+	 	<option value="11">Décembre</option>
+	 </select>
+	 <input type="text" placeholder="Annee" id="dtAnnee">
+	 <select id="dtHeure">
+	 	<option value="1">01</option>
+	 	<option value="2">02</option>
+	 	<option value="3">03</option>
+	 	<option value="4">04</option>
+	 	<option value="5">05</option>
+	 	<option value="6">06</option>
+	 	<option value="7">07</option>
+	 	<option value="8">08</option>
+	 	<option value="9">09</option>
+	 	<option value="10">10</option>
+	 	<option value="11">11</option>
+	 	<option value="12">12</option>
+	 	<option value="13">13</option>
+	 	<option value="14">14</option>
+	 	<option value="15">15</option>
+	 	<option value="16">16</option>
+	 	<option value="17">17</option>
+	 	<option value="18">18</option>
+	 	<option value="19">19</option>
+	 	<option value="20">20</option>
+	 	<option value="21">21</option>
+	 	<option value="22">22</option>
+	 	<option value="23">23</option>
+	 </select>
+	 <select id="dtMin">
+	 	<option value="00" selected="Selected">00</option>
+	 	<option value="15">15</option>
+	 	<option value="30">30</option>
+	 	<option value="45">45</option>
+	 </select>
 <script>
 	d = new Date();	
-	if (d.getMinutes() < 10) mm = "0" + d.getMinutes();
-	else mm = d.getMinutes();
-	if (d.getHours() < 10) hh = "0" + d.getHours();
-	else hh = d.getHours();
-	if (d.getDate() < 10) dd = "0" + d.getDate();
-	else dd = d.getDate();
-	if (d.getMonth()+1 < 10) mo = "0" + d.getMonth()+1;
-	else mo = d.getMonth()+1;
-	datetime = d.getFullYear() + '' +  mo + ''+  dd + 'T' + hh + '' + mm + '00';
-	
-	$("#dapi").val(datetime);
-	autocomplete._makeDatetime($("#dapi"));
+	$("#dtAnnee").val(d.getFullYear());
+	$('#dtMois').val(d.getMonth());
+	$("#dtDate").val(d.getDate());
+	$("#dtHeure").val(d.getHours());
 </script>
 	 <span class="tooltips"></span>
 	 
@@ -186,12 +225,11 @@
           //request.manage();
           //response.manageUrl();
           
-			
 		  majmap();
           
       });
       function majmap() {
-          aDatetime = $('#dapi').val();
+          aDatetime = $('#dtAnnee').val() + $('#dtMois').val() + $('#dtDate').val() + 'T' + $('#dtHeure').val() + $('#dtMin').val();
           aDepart = $('#depart').val();
           
           atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
