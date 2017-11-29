@@ -118,18 +118,18 @@
 	 
 	 <input type="text" placeholder="Jour" id="dtDate">
 	 <select id="dtMois">
-	 	<option value="0">Janvier</option>
-	 	<option value="1">Février</option>
-	 	<option value="2">Mars</option>
-	 	<option value="3">Avril</option>
-	 	<option value="4">Mai</option>
-	 	<option value="5">Juin</option>
-	 	<option value="6">Juillet</option>
-	 	<option value="7">Aout</option>
-	 	<option value="8">Septembre</option>
-	 	<option value="9">Octobre</option>
-	 	<option value="10">Novembre</option>
-	 	<option value="11">Décembre</option>
+	 	<option value="1">Janvier</option>
+	 	<option value="2">Février</option>
+	 	<option value="3">Mars</option>
+	 	<option value="4">Avril</option>
+	 	<option value="5">Mai</option>
+	 	<option value="6">Juin</option>
+	 	<option value="7">Juillet</option>
+	 	<option value="8">Aout</option>
+	 	<option value="9">Septembre</option>
+	 	<option value="10">Octobre</option>
+	 	<option value="11">Novembre</option>
+	 	<option value="12">Décembre</option>
 	 </select>
 	 <input type="text" placeholder="Annee" id="dtAnnee">
 	 <select id="dtHeure">
@@ -158,7 +158,7 @@
 	 	<option value="23">23</option>
 	 </select>
 	 <select id="dtMin">
-	 	<option value="00" selected="Selected">00</option>
+	 	<option value="0" selected="Selected">00</option>
 	 	<option value="15">15</option>
 	 	<option value="30">30</option>
 	 	<option value="45">45</option>
@@ -166,7 +166,7 @@
 <script>
 	d = new Date();	
 	$("#dtAnnee").val(d.getFullYear());
-	$('#dtMois').val(d.getMonth());
+	$('#dtMois').val(d.getMonth()+1);
 	$("#dtDate").val(d.getDate());
 	$("#dtHeure").val(d.getHours());
 </script>
@@ -229,7 +229,20 @@
           
       });
       function majmap() {
-          aDatetime = $('#dtAnnee').val() + $('#dtMois').val() + $('#dtDate').val() + 'T' + $('#dtHeure').val() + $('#dtMin').val();
+      
+		if ($('#dtMin').val() < 10) mm = "0" + $('#dtMin').val();
+		else mm = $('#dtMin').val();
+		
+		if ($('#dtHeure').val() < 10) hh = "0" + $('#dtHeure').val();
+		else hh = $('#dtHeure').val();
+		
+		if ($('#dtDate').val() < 10) dd = "0" + $('#dtDate').val();
+		else dd = $('#dtDate').val();
+	
+		if ($('#dtMois').val() < 10) mo = "0" + $('#dtMois').val();
+		else mo = $('#dtMois').val();
+      
+          aDatetime = $('#dtAnnee').val() + mo + dd + 'T' + hh + mm;
           aDepart = $('#depart').val();
           
           atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
@@ -241,7 +254,7 @@
           aapi = "fr-sw";
           arequest = "https://api.navitia.io/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
           response.inoui(arequest,atoken,'#data2');
-        }
+    }
     </script>
 
   </body>
