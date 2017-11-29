@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <script src="lib/lib.min.js"></script>
+    <script src="js/app.min.js"></script>
     <title>navitia playground</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -62,10 +64,86 @@
             <h3>Paramètres</h3>
             
             <div id="parameters">
-              <div id="addParam" class="inputDiv">
-                <input id="addParamInput" class="addInput" type="text" placeholder="type a key to add a parameter">
-                <button class="add" onclick="request.insertParam()">Add</button>
-              </div>
+	<div class="inputDiv toDelete">
+	 <span class="key">Départ</span>
+	 <input type="text" placeholder="type your value here" class="value parameters ui-autocomplete-input" autocomplete="off" id="depart" value="1.44346;43.60426">
+	 <span class="tooltips" id="tl1">
+	 </span>
+<script>
+		var tooltips = $('#tl1');
+		
+        $('<button/>')
+            .html('<img src="img/pictos/MapMarker.svg" alt="map">')
+            .click(function() {
+                var div = $('<div/>').appendTo('body');
+                map.createMap(function(m) {
+                    m.on('click', function(e) {
+                        var coord = sprintf('%.5f;%.5f', e.latlng.lng, e.latlng.lat);
+                        $(tooltips).prev().val(coord).select();
+                        div.children().trigger('npg:remove');
+                        div.remove();
+                    });
+                    return storage.getBounds();
+                }).css({
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    height: '100%',
+                    width: '100%',
+                }).appendTo(div);
+                utils.notifyInfo('Click on the map to set the location.');
+            }).prependTo(tooltips);
+
+        $('<button/>')
+            .html('<img src="img/pictos/Location.svg" alt="location">')
+            .click(function() {
+                utils.notifyInfo('Getting current position...');
+                navigator.geolocation.getCurrentPosition(function(pos) {
+                    var coord = sprintf('%.5f;%.5f', pos.coords.longitude, pos.coords.latitude);
+                    utils.notifyInfo('Got location: ' + coord);
+                    $(tooltips).prev().val(coord).select();
+                }, function(error) {
+                    utils.notifyWarn(sprintf('geolocation error: %s', error.message));
+                }, {
+                    enableHighAccuracy: false,
+                    timeout: 60000,//1min
+                    maximumAge: 300000,//5min
+                });
+            }).prependTo(tooltips);
+</script>
+	 
+	</div>
+	<div class="inputDiv toDelete">
+	 <span class="key">DateHeure</span>
+	 <input type="text" placeholder="type your value here" class="value parameters hasDatepicker" id="dapi">
+<script>
+	d = new Date();	
+	if (d.getMinutes() < 10) mm = "0" + d.getMinutes();
+	else mm = d.getMinutes();
+	if (d.getHours() < 10) hh = "0" + d.getHours();
+	else hh = d.getHours();
+	if (d.getDate() < 10) dd = "0" + d.getDate();
+	else dd = d.getDate();
+	if (d.getMonth()+1 < 10) mo = "0" + d.getMonth()+1;
+	else mo = d.getMonth()+1;
+	datetime = d.getFullYear() + '' +  mo + ''+  dd + 'T' + hh + '' + mm + '00';
+	
+	$("#dapi").val(datetime);
+	autocomplete._makeDatetime($("#dapi"));
+	/*
+	$("#dapi").datetimepicker({
+        	dateFormat: 'yymmdd',
+        	timeFormat: 'HHmmss',
+   	        timeInput: true,
+        	separator: 'T',
+        	controlType: 'select',
+        	oneLine: true,
+    	});
+*/
+</script>
+	 <span class="tooltips"></span>
+	 
+	</div>
             </div>
           </div><!-- parameterFrame -->
           <div id="createdRequestFrame">
@@ -75,7 +153,7 @@
               <div id="requestUrl"></div>
             </div>
             <div id="submitDiv">
-              <button class="Submit" onclick="request.submit()">Rafraichir</button>
+              <button class="Submit" onclick="majmap()">Rafraichir</button>
             </div>
           </div><!-- createdRequestFrame -->
         </div><!-- hContainer -->
@@ -91,7 +169,16 @@
       <div id="response"><!-- response -->
         <div class="hContainer">
           <div id="status">Loading...</div>
-          <div id="data"></div>
+          <table width="100%">
+          <td width="50%" valign="top">
+          	<h2>Version Actuelle</h2>
+          	<div id="data"></div>
+          </td>
+          <td width="50%" valign="top">
+          	<h2>Version Alternative</h2>
+          	<div id="data2"></div>
+          </td>
+          </table>
         </div><!-- hContainer -->
       </div><!-- response -->
 
@@ -103,13 +190,30 @@
       me on GitHub</a>
     </footer>
 
-    <script src="lib/lib.min.js"></script>
-    <script src="js/app.min.js"></script>
+
     <script>
       $(document).ready(function() {
-          request.manage();
-          response.manageUrl();
+          //request.manage();
+          //response.manageUrl();
+          
+			
+		  majmap();
+          
       });
+      function majmap() {
+          aDatetime = $('#dapi').val();
+          aDepart = $('#depart').val();
+          
+          atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
+          aapi = "fr-sw";
+          arequest = "https://api.navitia.io/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
+          response.inoui(arequest,atoken,'#data');
+          
+          atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
+          aapi = "fr-sw";
+          arequest = "https://api.navitia.io/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
+          response.inoui(arequest,atoken,'#data2');
+        }
     </script>
 
   </body>
