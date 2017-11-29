@@ -1,0 +1,114 @@
+<html>
+    <head>
+      <title>navitia playground</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <link href="css/index/index.css" rel="stylesheet">
+      <link href="css/request/url.css" rel="stylesheet">
+      <link href="css/request/global.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+      <link rel="icon" href="img/favicon.ico">
+    </head>
+<body>
+    <ul id="header">
+	    <li><a id="back" href="index.html" title="Go to Homepage">
+	    		<img id="logo" src="img/n_playground.svg" alt="Logo">
+	    	</a>
+	    </li>
+	    <li>
+		    <a id="doc" href="http://doc.navitia.io" title="Go to Navitia documentation">
+		      <img id="picto" src="img/picto_doc.svg" alt="picto documentation">
+		      doc
+		    </a>
+		</li>
+    </ul>
+
+	<div id="raw">
+		<div class="col">
+			<h2>You’re beginner? Use templated examples</h2>
+			<div class="rubriques">	
+				<h3><img class="pictofeatures" src="img/journey.png"></h3>		
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fjourneys%3Ffrom%3D%257Bplace.id%257D%26to%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26">Journey with coverage</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fjourneys%3Fto%3D%257Bplace.id%257D%26from%3D%257Bplace.id%257D%26datetime_represents%3Darrival%26datetime%3D%257Bdatetime%257D%26">Journey with arrival datetime</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fjourneys%3Ffrom%3D%257Bplace.id%257D%26to%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26">Journey without coverage</a>
+			</div>
+
+			<div class="rubriques">	
+				<h3><img class="pictofeatures" src="img/departure.png"></h3>		
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fstop_areas%2F%257Bstop_area.id%257D%2Fdepartures%3Ffrom_datetime%3D%257Bdatetime%257D%26">Departures at stop area</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fstop_areas%2F%257Bstop_area.id%257D%2Farrivals%3Ffrom_datetime%3D%257Bdatetime%257D%26">Arrivals at stop area</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fstop_areas%2F%257Bstop_area.id%257D%2Fstop_schedules%3Ffrom_datetime%3D%257Bdatetime%257D%26items_per_schedule%3D5%26">Stop schedules at stop area</a>
+			</div>		
+
+			<div class="rubriques">	
+				<h3><img class="pictofeatures" src="img/route_schedules.png"></h3>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Froutes%2F%257Broute.id%257D%2Froute_schedules%3Ffrom_datetime%3D%257Bdatetime%257D%26items_per_schedule%3D25%26">Route schedules for route</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Flines%2F%257Bline.id%257D%2Froute_schedules%3Ffrom_datetime%3D%257Bdatetime%257D%26items_per_schedule%3D25%26">Route schedules for line</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fstop_areas%2F%257Bstop_area.id%257D%2Froute_schedules%3Ffrom_datetime%3D%257Bdatetime%257D%26items_per_schedule%3D25%26">Route schedules at stop area</a>
+			</div>
+
+			<div class="rubriques">
+				<h3><img class="pictofeatures" src="img/auto_complete.png"></h3>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fpt_objects%3Fq%3D%257Btext%257D%26">Auto complete transportation object</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fplaces%3Fq%3D%257Btext%257D%26">Auto complete places</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fplaces%3Fq%3D%257Btext%257D%26type%255B%255D%3Dstop_area%26">Auto complete only on stop area</a>
+			</div>
+
+			<div class="rubriques">	
+				<h3><img class="pictofeatures" src="img/find.png"></h3>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoord%2F%257Blon%253Blat%257D%2Fplaces_nearby%3F">Find places nearby</a>
+				<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fcoord%2F%257Blon%253Blat%257D%2Fstop_areas%3Fdistance%3D500%26">Find stop areas nearby</a>
+			</div>
+
+			<div class="rubriques">	
+				<h3><img class="pictofeatures" src="img/isochrons.png"></h3>
+<a href="play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2F%257Bregion.id%257D%2Fisochrones%3Ffrom%3D%257Bplace.id%257D%26datetime%3D%257Bdatetime%257D%26boundary_duration%255B%255D%3D600%26boundary_duration%255B%255D%3D1200%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D2400%26boundary_duration%255B%255D%3D3000%26boundary_duration%255B%255D%3D3600%26">Graphical isochrons with coverage</a>
+
+<script>
+	d = new Date();
+	
+	if (d.getMinutes() < 10) mm = "0" + d.getMinutes();
+	else mm = d.getMinutes();
+	if (d.getHours() < 10) hh = "0" + d.getHours();
+	else hh = d.getHours();
+	if (d.getDate() < 10) dd = "0" + d.getDate();
+	else dd = d.getDate();
+	if (d.getMonth()+1 < 10) mo = "0" + d.getMonth()+1;
+	else mo = d.getMonth()+1;
+	token = "a1def084-c160-49a3-9198-6cfc960bf5ff";
+	datetime = d.getFullYear() + '' +  mo + ''+  dd + 'T' + hh + '' + mm + '00';
+//	datetime = sprintf('%04d%02d%02dT%02d%02d00', d.getFullYear(), d.getMonth() + 1, d.getDate(),d.getHours(),d.getMinutes());
+	document.location.href = 'play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Ffr-sw%2Fisochrones%3Ffrom%3D1.44346;43.60426%26datetime%3D'+ datetime +'%26boundary_duration%255B%255D%3D1800%26boundary_duration%255B%255D%3D3600%26boundary_duration%255B%255D%3D5400%26boundary_duration%255B%255D%3D7200%26&token='+token;
+</script>
+                    </div>
+		</div><!-- ferme col -->
+
+		<div id="urlForm"><!-- url -->
+			<h2>Or, you’re an expert?</h2>
+				<img id="krakensuperhero" src="img/visuel_pro.svg">
+			<form action="play.html" method="get">
+				<div id="urlDiv" class="inputDiv">
+		            <div class="key">URL</div>
+		           	<input id="urlinput" name="request" type="text" placeholder="Insert your url">
+		           	<button>go</button>
+		        </div>
+			</form> 
+				<p class="ou">or</p>
+				<div class="or">
+					<form action="play.html"><button>Start with playground</button></form>
+				</div>
+				<p class="ou">or</p>
+				<div class="or">
+					<form action="file.html"><button>Give your Json</button></form>
+				</div>
+		</div><!-- url -->
+	</div><!-- raw -->
+
+        <footer>
+          © 2017 <a href="http://navitia.io/">Kisio Digital</a>
+          − <a href="https://github.com/CanalTP/navitia-playground">Fork
+            me on GitHub</a>
+        </footer>
+
+	</body>
+</html>
