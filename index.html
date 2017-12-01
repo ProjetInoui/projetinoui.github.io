@@ -245,16 +245,18 @@
       
           aDatetime = $('#dtAnnee').val() + mo + dd + 'T' + hh + mm;
           aDepart = $('#depart').val();
-          
-          atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
-          aapi = "fr-sw";
-          arequest = "https://api.navitia.io/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
-          response.inoui(arequest,atoken,'#data');
-          
+
           atoken = "23f74046-dc57-4595-af3e-521a91060b8c";
           aapi = "fr-sw-c";
           arequest = "http://navitia2-ws.ctp.customer.canaltp.fr/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
           response.inoui(arequest,atoken,'#data2');
+          
+          atoken = "a1def084-c160-49a3-9198-6cfc960bf5ff";
+          aapi = "fr-sw";
+          arequest = "http://api.navitia.io/v1/coverage/" + aapi + "/isochrones?from=" + aDepart + "&datetime=" + aDatetime + "&boundary_duration%5B%5D=1800&boundary_duration%5B%5D=3600&boundary_duration%5B%5D=5400&boundary_duration%5B%5D=7200&";
+          response.inoui(arequest,atoken,'#data');
+          
+
     }
     </script>
 
